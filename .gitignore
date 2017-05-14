@@ -22,3 +22,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### ignore log/tmp files ###
+*.log
+*.tmp
