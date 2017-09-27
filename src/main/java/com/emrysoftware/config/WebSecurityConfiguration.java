@@ -31,8 +31,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     		// set debug flag. dumps a lot of request data 
     		.debug(false)
     		
-        	// ignore requests for jsf resources
-    		.ignoring().antMatchers("/javax.faces.resource/**");
+        	// ignore requests for jsf resources, fonts, error page
+    		// probably don't want to add "assets" unless we create a 
+    		// separate "public-assets" or something
+    		.ignoring().antMatchers("/javax.faces.resource/**").and()
+    		.ignoring().antMatchers("/fonts/**").and()
+    		.ignoring().antMatchers("/favicon.ico").and()
+    		.ignoring().antMatchers("/error")
+    		;
     }
     
     /*
@@ -40,17 +46,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure ( HttpSecurity http ) throws Exception {
-    	http    		
-    		//.csrf ().disable ()
+    	http
     		.authorizeRequests()
-    			// pass thru static assets & error page
-    			.antMatchers("/assets/**").permitAll()
-    			.antMatchers("/error").permitAll()
 
 				// catch anything else
 				.anyRequest().hasRole("USER")
 				
-				// back to top
+				// chain
 				.and()
 			
 			// configure login
@@ -62,7 +64,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	            .defaultSuccessUrl ( "/index", true )
 	            .failureUrl ( "/login?login_error=true" )
 	            
-	            // back to top
+	            // chain
 	            .and()
 	            
 	        // configure logout

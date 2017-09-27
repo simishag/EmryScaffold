@@ -5,25 +5,22 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core"
 	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:o="http://omnifaces.org/ui"
 	  xmlns:of="http://omnifaces.org/functions"
-	  xmlns:bo="http://bootsfaces.net/ui"
-	  xmlns:bu="http://butterfaces.org/components">
+	  xmlns:o="http://omnifaces.org/ui">
 
-<ui:composition template="layouts/bootsfaces/template-1col-header-footer.xhtml">
+<ui:composition template="layouts/basic/template-1col-header-footer.xhtml">
 
 <ui:define name="pageTitle">Hello</ui:define>
 
 <ui:define name="pageContent">
 
-<bo:panel header="Content Panel">
+<h:panelGroup header="Content Panel">
 This is the content text for Hello
 <p/>
 ${fn:toUpperCase('blah')}
 <p/>
 <h:outputText value="${fn:toLowerCase('BLAH')}"/>
-</bo:panel>
+</h:panelGroup>
 
 <h:messages/>
 

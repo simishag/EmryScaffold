@@ -8,7 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude=BasicErrorController.class)
+@EnableAutoConfiguration //(exclude=BasicErrorController.class)
 public class EmryScaffoldApplication extends SpringBootServletInitializer {
 
 	@Override

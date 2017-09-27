@@ -1,15 +1,16 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core"
 	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	  xmlns:o="http://omnifaces.org/ui"
-	  xmlns:of="http://omnifaces.org/functions"
-	  xmlns:bo="http://bootsfaces.net/ui"
->
+	  xmlns:of="http://omnifaces.org/functions">
 	  
-<bo:container style="padding-right: 15px;  padding-left: 15px;  margin-right: auto; margin-left: auto;">
+<ui:composition>
+	  
+<h:panelGroup style="padding-right: 15px;  padding-left: 15px;  margin-right: auto; margin-left: auto;">
 	<h1>Login</h1>
 	<c:if test="${not empty param.login_error}">
 		<div class="error">
@@ -17,16 +18,16 @@
 		</div>
 	</c:if>
 	
-	<bo:messages />
+	<h:messages />
 
-	<bo:panel title="Login Information">
+	<h:panelGroup header="Login Information">
 		<form action="${request.contextPath}/j_spring_security_login" method="post">
-			<bo:panelGrid columns="2">
+			<h:panelGrid columns="2">
 				<h:outputText value="Username" />
 				<h:inputText id="username" />
 				<h:outputText value="Password" />
 				<h:inputSecret id="password" />
-			</bo:panelGrid>
+			</h:panelGrid>
 
 			<div class="submit">
 				<button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
@@ -36,7 +37,7 @@
 
 			<h:inputHidden type="hidden" id="${_csrf.parameterName}" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
-	</bo:panel>
+	</h:panelGroup>
 
 	<h3>Username/password pairs:</h3>
 	<ul>
@@ -48,6 +49,8 @@
 		<li>user has ROLE_USER</li>
 		<li>admin has ROLE_USER and ROLE_ADMIN</li>
 	</ul>
-</bo:container>
+</h:panelGroup>
 
 </ui:composition>
+
+</html>
